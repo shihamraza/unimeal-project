@@ -13,10 +13,11 @@ function MealPlanner() {
   const [plan, setPlan] = useState(null);
   const [entries, setEntries] = useState({});
   const [recipes, setRecipes] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+const [showModal, setShowModal] = useState(false);
   const [modalSlot, setModalSlot] = useState(null);
   const [modalSearch, setModalSearch] = useState("");
   const [weekOffset, setWeekOffset] = useState(0);
+  const [confirmRemove, setConfirmRemove] = useState(null);
 
   useEffect(() => {
     if (token) {
@@ -111,14 +112,17 @@ function MealPlanner() {
       addToast("Could not add meal", "error");
     }
   };
-
-  const removeEntry = async (day, meal) => {
+const removeEntry = (day, meal) => {
     const key = `${day}-${meal}`;
     const entry = entries[key];
     if (!entry || !plan) return;
-    if (!window.confirm("Remove this meal?")) return;
+    setConfirmRemove({ entry, mealName: entry.title || "this meal" });
+  };
+
+  const confirmRemoveEntry = async () => {
+    if (!confirmRemove) return;
     try {
-      await axios.delete(`http://localhost:5000/api/meal-plans/${plan.id}/entries/${entry.id}`, {
+      await axios.delete(`http://localhost:5000/api/meal-plans/${plan.id}/entries/${confirmRemove.entry.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       addToast("Meal removed", "info");
@@ -126,6 +130,7 @@ function MealPlanner() {
     } catch (err) {
       addToast("Could not remove meal", "error");
     }
+    setConfirmRemove(null);
   };
 
   const weekTotal = Object.values(entries).reduce((sum, e) => {
@@ -269,8 +274,32 @@ function MealPlanner() {
           </div>
         </div>
       )}
+
+      {confirmRemove && (
+        <div className="modal-overlay" onClick={() => setConfirmRemove(null)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: "400px" }}>
+            <h3 style={{ marginTop: 0, marginBottom: "0.5rem" }}>Remove meal?</h3>
+            <p style={{ color: "var(--text-muted)", marginBottom: "1.5rem" }}>
+              Are you sure you want to remove <strong>{confirmRemove.mealName}</strong> from your plan?
+            </p>
+            <div style={{ display: "flex", gap: "0.75rem", justifyContent: "flex-end" }}>
+              <button className="btn btn-secondary" onClick={() => setConfirmRemove(null)}>
+                Cancel
+              </button>
+              <button
+                className="btn btn-primary"
+                onClick={confirmRemoveEntry}
+                style={{ background: "#dc2626", borderColor: "#dc2626" }}
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+          
 
 export default MealPlanner;
