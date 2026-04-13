@@ -20,7 +20,7 @@ app.use(express.json());
 
 // Allow the React frontend (port 3000) to talk to this backend (port 5000)
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
   credentials: true,
 }));
 

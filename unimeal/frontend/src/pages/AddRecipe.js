@@ -89,7 +89,7 @@ function AddRecipe() {
         })),
       };
 
-      await axios.post("http://localhost:5000/api/recipes", payload, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/recipes`, payload, {
   headers: { Authorization: `Bearer ${token}` }
 });
       addToast("Recipe created!", "success");

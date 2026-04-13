@@ -47,7 +47,7 @@ const [showModal, setShowModal] = useState(false);
   const fetchPlan = async () => {
     const weekStart = getWeekStart();
     try {
-      const res = await axios.get(`http://localhost:5000/api/meal-plans/${weekStart}`, {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/meal-plans/${weekStart}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPlan(res.data);
@@ -66,7 +66,7 @@ const [showModal, setShowModal] = useState(false);
 
   const fetchRecipes = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/recipes");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/recipes`);
       setRecipes(res.data);
     } catch (err) { console.error(err); }
   };
@@ -75,7 +75,7 @@ const [showModal, setShowModal] = useState(false);
     if (plan && plan.id) return plan.id;
     const weekStart = getWeekStart();
     try {
-      const res = await axios.post("http://localhost:5000/api/meal-plans", {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/meal-plans`, {
         week_start: weekStart
       }, { headers: { Authorization: `Bearer ${token}` } });
       const newPlan = res.data.meal_plan;
@@ -100,7 +100,7 @@ const [showModal, setShowModal] = useState(false);
         addToast("Could not create meal plan", "error");
         return;
       }
-      await axios.post(`http://localhost:5000/api/meal-plans/${planId}/entries`, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/meal-plans/${planId}/entries`, {
         recipe_id: recipe.id,
         day_of_week: modalSlot.day,
         meal_slot: modalSlot.meal
@@ -122,7 +122,7 @@ const removeEntry = (day, meal) => {
   const confirmRemoveEntry = async () => {
     if (!confirmRemove) return;
     try {
-      await axios.delete(`http://localhost:5000/api/meal-plans/${plan.id}/entries/${confirmRemove.entry.id}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/meal-plans/${plan.id}/entries/${confirmRemove.entry.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       addToast("Meal removed", "info");

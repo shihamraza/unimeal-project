@@ -14,7 +14,7 @@ function Home() {
 
   const fetchFeatured = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/recipes");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/recipes`);
       // Pick 4 varied recipes (different cuisines if possible)
       const all = res.data || [];
       const cuisines = [];

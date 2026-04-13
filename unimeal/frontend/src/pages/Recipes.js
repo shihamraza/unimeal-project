@@ -40,7 +40,7 @@ function Recipes() {
       if (dietary === "vegetarian") params.is_vegetarian = "true";
       if (dietary === "vegan") params.is_vegan = "true";
       if (dietary === "gluten-free") params.is_gluten_free = "true";
-      const res = await axios.get("http://localhost:5000/api/recipes", { params });
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/recipes`, { params });
       setRecipes(res.data);
     } catch (err) {
       console.error("Failed to fetch recipes:", err);

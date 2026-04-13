@@ -41,7 +41,7 @@ function ShoppingList() {
     const weekStart = getWeekStart();
     try {
       const planRes = await axios.get(
-        `http://localhost:5000/api/meal-plans/${weekStart}`,
+        `${process.env.REACT_APP_API_URL}/api/meal-plans/${weekStart}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const id = planRes.data.id;
@@ -59,7 +59,7 @@ function ShoppingList() {
   const fetchShoppingList = async (id) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/shopping-lists/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/shopping-lists/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setItems(res.data.items || []);
@@ -81,7 +81,7 @@ function ShoppingList() {
     setGenerating(true);
     try {
       await axios.post(
-        `http://localhost:5000/api/shopping-lists/generate/${planId}`,
+        `${process.env.REACT_APP_API_URL}/api/shopping-lists/generate/${planId}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -98,7 +98,7 @@ function ShoppingList() {
   const toggleCheck = async (itemId) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/shopping-lists/items/${itemId}/check`,
+        `${process.env.REACT_APP_API_URL}/api/shopping-lists/items/${itemId}/check`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

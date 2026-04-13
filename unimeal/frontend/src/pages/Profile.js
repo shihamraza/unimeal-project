@@ -16,7 +16,7 @@ function Profile() {
 
   const fetchSavedRecipes = async () => {
     try {
-    const res = await axios.get("http://localhost:5000/api/recipes/saved/list", {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/recipes/saved/list`, {
   headers: { Authorization: `Bearer ${token}` }
 });
       setSavedRecipes(res.data);

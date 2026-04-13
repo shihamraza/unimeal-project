@@ -20,7 +20,7 @@ function RecipeDetail() {
   const fetchRecipe = async () => {
     try {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const res = await axios.get(`http://localhost:5000/api/recipes/${id}`, { headers });
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/recipes/${id}`, { headers });
       setRecipe(res.data);
       setSaved(res.data.is_saved || false);
     } catch (err) {
@@ -35,7 +35,7 @@ const toggleSave = async () => {
       return;
     }
     try {
-      const res = await axios.post(`http://localhost:5000/api/recipes/${id}/save`, {}, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/recipes/${id}/save`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSaved(res.data.saved);
@@ -132,7 +132,7 @@ const toggleSave = async () => {
             <button className="btn btn-danger" onClick={async () => {
               if (!window.confirm("Delete this recipe? This cannot be undone.")) return;
               try {
-                await axios.delete(`http://localhost:5000/api/recipes/${id}`, {
+                await axios.delete(`${process.env.REACT_APP_API_URL}/api/recipes/${id}`, {
                   headers: { Authorization: `Bearer ${token}` }
                 });
                 addToast("Recipe deleted", "info");
