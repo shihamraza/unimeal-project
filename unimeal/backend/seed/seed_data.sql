@@ -262,3 +262,110 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit) VALUES
 (10, (SELECT id FROM ingredients WHERE name = 'bell pepper'), 1, 'each'),
 (10, (SELECT id FROM ingredients WHERE name = 'tinned chopped tomatoes'), 400, 'g'),
 (10, (SELECT id FROM ingredients WHERE name = 'olive oil'), 15, 'ml');
+
+-- ============================================
+-- RECIPES 11–25 (extra)
+-- ============================================
+
+INSERT INTO recipes (title, description, instructions, cost_per_serving, prep_time, difficulty, cuisine, servings, is_vegetarian, is_vegan, is_gluten_free) VALUES
+('Scrambled Eggs on Toast', 'Five-minute breakfast classic.', '1. Whisk eggs with a splash of milk.\n2. Melt butter in a pan.\n3. Pour in eggs, stir gently until just set.\n4. Serve on toasted bread.', 0.90, 7, 'easy', 'British', 1, true, false, false),
+('Cheesy Pasta Bake', 'Baked pasta with tomato sauce and cheese on top.', '1. Cook pasta. 2. Mix with tinned tomatoes and garlic. 3. Top with cheese. 4. Bake 15 min at 200C.', 1.60, 30, 'easy', 'Italian', 2, true, false, false),
+('Veggie Wrap', 'A quick lunch wrap packed with beans and peppers.', '1. Warm tortilla. 2. Fill with beans, chopped pepper, cheese. 3. Roll up and eat.', 1.40, 10, 'easy', 'Mexican', 1, true, false, false),
+('Chicken Fajita Wrap', 'Spiced chicken in a soft tortilla.', '1. Slice chicken, pepper, onion. 2. Fry with cumin and oil. 3. Fill warmed tortillas.', 2.40, 20, 'easy', 'Mexican', 2, false, false, false),
+('Tomato Soup', 'A warming bowl on a cold day.', '1. Fry onion and garlic. 2. Add tinned tomatoes and 300ml water. 3. Simmer 15 min. 4. Blend smooth.', 0.85, 25, 'easy', 'British', 2, true, true, true),
+('Cheesy Scrambled Eggs', 'Scrambled eggs with melted cheese stirred in.', '1. Whisk eggs and milk. 2. Scramble in butter. 3. Stir in grated cheese at the end.', 1.10, 8, 'easy', 'British', 1, true, false, true),
+('Buttery Mash', 'Creamy mashed potato side dish.', '1. Boil peeled potatoes 15 min. 2. Drain. 3. Mash with butter and milk. 4. Season.', 0.70, 20, 'easy', 'British', 2, true, false, true),
+('Chicken Fried Rice', 'Fried rice with chicken, egg and peas.', '1. Fry diced chicken. 2. Push aside, scramble egg. 3. Add rice, peas, soy sauce. 4. Stir fry 3 min.', 2.30, 25, 'medium', 'Chinese', 2, false, false, false),
+('Veggie Pasta Primavera', 'Pasta with mixed veg and garlic oil.', '1. Cook pasta. 2. Fry garlic in olive oil, add mixed veg 4 min. 3. Toss with pasta.', 1.30, 18, 'easy', 'Italian', 2, true, true, false),
+('Chilli Bean Wrap', 'Spicy beans wrapped in a tortilla.', '1. Heat beans with cumin and chilli flakes. 2. Fry onion. 3. Fill tortilla with mix.', 1.20, 12, 'easy', 'Mexican', 1, true, true, false),
+('Veggie Omelette', 'Omelette with peppers, onion and cheese.', '1. Fry chopped pepper and onion. 2. Pour over whisked eggs. 3. Add cheese, fold, serve.', 1.30, 12, 'easy', 'French', 1, true, false, true),
+('Garlic Bread', 'Crunchy buttery garlic bread.', '1. Mix softened butter with minced garlic. 2. Spread on sliced bread. 3. Bake 8 min at 200C.', 0.60, 10, 'easy', 'Italian', 2, true, false, false),
+('Lemon Pea Rice', 'Light rice with peas and a lemon lift.', '1. Cook rice. 2. Stir in peas, olive oil, and lemon juice. 3. Season.', 0.95, 20, 'easy', 'British', 2, true, true, true),
+('Potato and Onion Hash', 'Crispy pan-fried potatoes with onion and egg.', '1. Dice potato, fry in oil 10 min. 2. Add sliced onion, cook 5 min. 3. Top with fried egg.', 1.40, 25, 'medium', 'British', 2, true, false, true),
+('Spicy Bean Rice Bowl', 'Rice topped with spicy beans and peppers.', '1. Cook rice. 2. Heat beans with cumin, chilli flakes, chopped pepper. 3. Spoon over rice.', 1.50, 20, 'easy', 'Mexican', 2, true, true, true);
+
+-- ============================================
+-- RECIPE_INGREDIENTS for recipes 11–25
+-- ============================================
+
+INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit) VALUES
+-- 11 Scrambled Eggs on Toast
+(11, (SELECT id FROM ingredients WHERE name = 'eggs'), 2, 'each'),
+(11, (SELECT id FROM ingredients WHERE name = 'bread'), 2, 'each'),
+(11, (SELECT id FROM ingredients WHERE name = 'butter'), 10, 'g'),
+(11, (SELECT id FROM ingredients WHERE name = 'milk'), 20, 'ml'),
+-- 12 Cheesy Pasta Bake
+(12, (SELECT id FROM ingredients WHERE name = 'pasta'), 200, 'g'),
+(12, (SELECT id FROM ingredients WHERE name = 'tinned chopped tomatoes'), 400, 'g'),
+(12, (SELECT id FROM ingredients WHERE name = 'garlic'), 2, 'each'),
+(12, (SELECT id FROM ingredients WHERE name = 'cheddar cheese'), 80, 'g'),
+-- 13 Veggie Wrap
+(13, (SELECT id FROM ingredients WHERE name = 'tortilla wraps'), 1, 'each'),
+(13, (SELECT id FROM ingredients WHERE name = 'tinned beans'), 150, 'g'),
+(13, (SELECT id FROM ingredients WHERE name = 'bell pepper'), 1, 'each'),
+(13, (SELECT id FROM ingredients WHERE name = 'cheddar cheese'), 30, 'g'),
+-- 14 Chicken Fajita Wrap
+(14, (SELECT id FROM ingredients WHERE name = 'chicken breast'), 250, 'g'),
+(14, (SELECT id FROM ingredients WHERE name = 'tortilla wraps'), 2, 'each'),
+(14, (SELECT id FROM ingredients WHERE name = 'bell pepper'), 1, 'each'),
+(14, (SELECT id FROM ingredients WHERE name = 'onion'), 1, 'each'),
+(14, (SELECT id FROM ingredients WHERE name = 'cumin'), 5, 'g'),
+(14, (SELECT id FROM ingredients WHERE name = 'olive oil'), 15, 'ml'),
+-- 15 Tomato Soup
+(15, (SELECT id FROM ingredients WHERE name = 'tinned chopped tomatoes'), 400, 'g'),
+(15, (SELECT id FROM ingredients WHERE name = 'onion'), 1, 'each'),
+(15, (SELECT id FROM ingredients WHERE name = 'garlic'), 2, 'each'),
+(15, (SELECT id FROM ingredients WHERE name = 'olive oil'), 15, 'ml'),
+-- 16 Cheesy Scrambled Eggs
+(16, (SELECT id FROM ingredients WHERE name = 'eggs'), 3, 'each'),
+(16, (SELECT id FROM ingredients WHERE name = 'cheddar cheese'), 30, 'g'),
+(16, (SELECT id FROM ingredients WHERE name = 'butter'), 10, 'g'),
+(16, (SELECT id FROM ingredients WHERE name = 'milk'), 20, 'ml'),
+-- 17 Buttery Mash
+(17, (SELECT id FROM ingredients WHERE name = 'potato'), 400, 'g'),
+(17, (SELECT id FROM ingredients WHERE name = 'butter'), 30, 'g'),
+(17, (SELECT id FROM ingredients WHERE name = 'milk'), 50, 'ml'),
+-- 18 Chicken Fried Rice
+(18, (SELECT id FROM ingredients WHERE name = 'chicken breast'), 200, 'g'),
+(18, (SELECT id FROM ingredients WHERE name = 'rice'), 200, 'g'),
+(18, (SELECT id FROM ingredients WHERE name = 'eggs'), 1, 'each'),
+(18, (SELECT id FROM ingredients WHERE name = 'frozen peas'), 100, 'g'),
+(18, (SELECT id FROM ingredients WHERE name = 'soy sauce'), 30, 'ml'),
+(18, (SELECT id FROM ingredients WHERE name = 'olive oil'), 15, 'ml'),
+-- 19 Veggie Pasta Primavera
+(19, (SELECT id FROM ingredients WHERE name = 'pasta'), 200, 'g'),
+(19, (SELECT id FROM ingredients WHERE name = 'mixed vegetables'), 200, 'g'),
+(19, (SELECT id FROM ingredients WHERE name = 'garlic'), 2, 'each'),
+(19, (SELECT id FROM ingredients WHERE name = 'olive oil'), 20, 'ml'),
+-- 20 Chilli Bean Wrap
+(20, (SELECT id FROM ingredients WHERE name = 'tortilla wraps'), 1, 'each'),
+(20, (SELECT id FROM ingredients WHERE name = 'tinned beans'), 200, 'g'),
+(20, (SELECT id FROM ingredients WHERE name = 'cumin'), 3, 'g'),
+(20, (SELECT id FROM ingredients WHERE name = 'chilli flakes'), 2, 'g'),
+(20, (SELECT id FROM ingredients WHERE name = 'onion'), 1, 'each'),
+-- 21 Veggie Omelette
+(21, (SELECT id FROM ingredients WHERE name = 'eggs'), 3, 'each'),
+(21, (SELECT id FROM ingredients WHERE name = 'bell pepper'), 1, 'each'),
+(21, (SELECT id FROM ingredients WHERE name = 'onion'), 1, 'each'),
+(21, (SELECT id FROM ingredients WHERE name = 'cheddar cheese'), 30, 'g'),
+(21, (SELECT id FROM ingredients WHERE name = 'butter'), 10, 'g'),
+-- 22 Garlic Bread
+(22, (SELECT id FROM ingredients WHERE name = 'bread'), 4, 'each'),
+(22, (SELECT id FROM ingredients WHERE name = 'butter'), 40, 'g'),
+(22, (SELECT id FROM ingredients WHERE name = 'garlic'), 3, 'each'),
+-- 23 Lemon Pea Rice
+(23, (SELECT id FROM ingredients WHERE name = 'rice'), 200, 'g'),
+(23, (SELECT id FROM ingredients WHERE name = 'frozen peas'), 100, 'g'),
+(23, (SELECT id FROM ingredients WHERE name = 'lemon'), 1, 'each'),
+(23, (SELECT id FROM ingredients WHERE name = 'olive oil'), 15, 'ml'),
+-- 24 Potato and Onion Hash
+(24, (SELECT id FROM ingredients WHERE name = 'potato'), 300, 'g'),
+(24, (SELECT id FROM ingredients WHERE name = 'onion'), 1, 'each'),
+(24, (SELECT id FROM ingredients WHERE name = 'olive oil'), 20, 'ml'),
+(24, (SELECT id FROM ingredients WHERE name = 'eggs'), 2, 'each'),
+-- 25 Spicy Bean Rice Bowl
+(25, (SELECT id FROM ingredients WHERE name = 'rice'), 200, 'g'),
+(25, (SELECT id FROM ingredients WHERE name = 'tinned beans'), 200, 'g'),
+(25, (SELECT id FROM ingredients WHERE name = 'cumin'), 5, 'g'),
+(25, (SELECT id FROM ingredients WHERE name = 'chilli flakes'), 2, 'g'),
+(25, (SELECT id FROM ingredients WHERE name = 'bell pepper'), 1, 'each');
