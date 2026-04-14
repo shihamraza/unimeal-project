@@ -104,18 +104,30 @@ function Home() {
       {/* How it works */}
       <section className="how-section">
         <h2 className="section-title">How it works</h2>
-        <div className="how-grid">
-          <div className="how-card">
+<div className="how-grid">
+          <div
+            className="how-card"
+            onClick={() => navigate("/recipes")}
+            style={{ cursor: "pointer" }}
+          >
             <div className="how-icon" style={{ background: "var(--nut-cal-bg)", color: "var(--nut-cal)" }}>🔍</div>
             <h3>Find recipes</h3>
             <p>Browse 25+ budget meals. Filter by cuisine, dietary needs, price, or difficulty. Every recipe is under £3 per serving.</p>
           </div>
-          <div className="how-card">
+          <div
+            className="how-card"
+            onClick={() => navigate(token ? "/meal-planner" : "/login")}
+            style={{ cursor: "pointer" }}
+          >
             <div className="how-icon" style={{ background: "var(--nut-fat-bg)", color: "var(--nut-fat)" }}>📅</div>
             <h3>Plan your week</h3>
             <p>Drag recipes into breakfast, lunch, and dinner slots. See your weekly cost add up in real time. Stay on budget.</p>
           </div>
-          <div className="how-card">
+          <div
+            className="how-card"
+            onClick={() => navigate(token ? "/shopping-list" : "/login")}
+            style={{ cursor: "pointer" }}
+          >
             <div className="how-icon" style={{ background: "var(--tag-veg-bg)", color: "var(--tag-veg-text)" }}>🛒</div>
             <h3>Get your shopping list</h3>
             <p>One click generates a list of everything you need, grouped by category. Quantities are combined automatically.</p>
