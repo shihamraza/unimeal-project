@@ -52,11 +52,14 @@ router.post("/generate/:mealPlanId", async (req, res) => {
     }
 
     // Calculate estimated total cost
+    // For g/ml: price_per_unit is per 100g/ml, so cost = (quantity / 100) * price
+    // For each: price_per_unit is per item, so cost = quantity * price
     let estimatedTotal = 0;
     ingredientsResult.rows.forEach((item) => {
       if (item.price_per_unit) {
-        // Rough cost estimate based on quantity and unit price
-        const cost = (item.total_quantity / 100) * item.price_per_unit;
+        const cost = item.unit === "each"
+          ? item.total_quantity * item.price_per_unit
+          : (item.total_quantity / 100) * item.price_per_unit;
         estimatedTotal += cost;
       }
     });
@@ -72,7 +75,11 @@ router.post("/generate/:mealPlanId", async (req, res) => {
     // Insert all the items
     for (const item of ingredientsResult.rows) {
       const estimatedCost = item.price_per_unit
-        ? Math.round((item.total_quantity / 100) * item.price_per_unit * 100) / 100
+        ? Math.round(
+            (item.unit === "each"
+              ? item.total_quantity * item.price_per_unit
+              : (item.total_quantity / 100) * item.price_per_unit) * 100
+          ) / 100
         : null;
 
       await pool.query(

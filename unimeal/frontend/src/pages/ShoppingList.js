@@ -5,8 +5,10 @@ import { useToast } from "../components/Toast";
 
 const CATEGORY_META = {
   produce:  { icon: "🥬", label: "Fresh Produce" },
+  meat:     { icon: "🥩", label: "Meat & Fish" },
   protein:  { icon: "🥩", label: "Protein" },
   dairy:    { icon: "🧀", label: "Dairy" },
+  frozen:   { icon: "🧊", label: "Frozen" },
   carbs:    { icon: "🍞", label: "Carbs & Grains" },
   pantry:   { icon: "🫙", label: "Pantry Staples" },
   other:    { icon: "📦", label: "Other" },
@@ -120,7 +122,7 @@ function ShoppingList() {
     grouped[cat].push(item);
   });
 
-  const catOrder = ["produce", "protein", "dairy", "carbs", "pantry", "other"];
+  const catOrder = ["produce", "meat", "protein", "dairy", "frozen", "carbs", "pantry", "other"];
   const sortedCats = catOrder.filter(c => grouped[c]);
 
   const totalItems = items.length;
