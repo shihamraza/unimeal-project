@@ -369,3 +369,6 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit) VALUES
 (25, (SELECT id FROM ingredients WHERE name = 'cumin'), 5, 'g'),
 (25, (SELECT id FROM ingredients WHERE name = 'chilli flakes'), 2, 'g'),
 (25, (SELECT id FROM ingredients WHERE name = 'bell pepper'), 1, 'each');
+
+
+UPDATE recipes SET image_url = CONCAT('https://unimeal-alpha.vercel.app/images/', id, '.jpg');
