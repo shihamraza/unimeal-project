@@ -96,21 +96,31 @@ function ShoppingList() {
     setGenerating(false);
   };
 
-  // Step 4: Toggle checked via backend PATCH
+  // Step 4: Toggle checked — optimistic update so the UI responds instantly.
+  // We flip the state immediately, then sync with the server in the background.
+  // If the server call fails we revert so the UI stays consistent.
   const toggleCheck = async (itemId) => {
+    // 1. Flip immediately — user sees the change right away
+    setItems(prev =>
+      prev.map(item =>
+        item.id === itemId ? { ...item, is_checked: !item.is_checked } : item
+      )
+    );
     try {
+      // 2. Sync with server in the background
       await axios.patch(
         `${process.env.REACT_APP_API_URL}/api/shopping-lists/items/${itemId}/check`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
+    } catch (err) {
+      // 3. Server failed — revert the optimistic flip
+      console.error("Could not toggle item:", err);
       setItems(prev =>
         prev.map(item =>
           item.id === itemId ? { ...item, is_checked: !item.is_checked } : item
         )
       );
-    } catch (err) {
-      console.error("Could not toggle item:", err);
     }
   };
 
