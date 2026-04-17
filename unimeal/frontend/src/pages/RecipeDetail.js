@@ -12,6 +12,7 @@ function RecipeDetail() {
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const [saved, setSaved] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
     fetchRecipe();
@@ -129,18 +130,7 @@ const toggleSave = async () => {
             {saved ? "♥ Saved" : "♡ Save Recipe"}
           </button>
           {user && recipe.created_by === user.id && (
-            <button className="btn btn-danger" onClick={async () => {
-              if (!window.confirm("Delete this recipe? This cannot be undone.")) return;
-              try {
-                await axios.delete(`${process.env.REACT_APP_API_URL}/api/recipes/${id}`, {
-                  headers: { Authorization: `Bearer ${token}` }
-                });
-                addToast("Recipe deleted", "info");
-                navigate("/recipes");
-              } catch (err) {
-                addToast(err.response?.data?.error || "Could not delete recipe", "error");
-              }
-            }}>
+            <button className="btn btn-danger" onClick={() => setShowDeleteModal(true)}>
               🗑 Delete
             </button>
           )}
@@ -208,6 +198,39 @@ const toggleSave = async () => {
           </div>
         )}
       </div>
+
+      {showDeleteModal && (
+        <div className="modal-overlay" onClick={() => setShowDeleteModal(false)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()} style={{ maxWidth: "400px" }}>
+            <h3 style={{ marginTop: 0, marginBottom: "0.5rem" }}>Delete recipe?</h3>
+            <p style={{ color: "var(--text-muted)", marginBottom: "1.5rem" }}>
+              Are you sure you want to delete <strong>{recipe.title}</strong>? This cannot be undone.
+            </p>
+            <div style={{ display: "flex", gap: "0.75rem", justifyContent: "flex-end" }}>
+              <button className="btn btn-secondary" onClick={() => setShowDeleteModal(false)}>
+                Cancel
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={async () => {
+                  setShowDeleteModal(false);
+                  try {
+                    await axios.delete(`${process.env.REACT_APP_API_URL}/api/recipes/${id}`, {
+                      headers: { Authorization: `Bearer ${token}` }
+                    });
+                    addToast("Recipe deleted", "info");
+                    navigate("/recipes");
+                  } catch (err) {
+                    addToast(err.response?.data?.error || "Could not delete recipe", "error");
+                  }
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
