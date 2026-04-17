@@ -266,24 +266,89 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit) VALUES
 -- ============================================
 -- RECIPES 11–25 (extra)
 -- ============================================
-
 INSERT INTO recipes (title, description, instructions, cost_per_serving, prep_time, difficulty, cuisine, servings, is_vegetarian, is_vegan, is_gluten_free) VALUES
-('Scrambled Eggs on Toast', 'Five-minute breakfast classic.', '1. Whisk eggs with a splash of milk.\n2. Melt butter in a pan.\n3. Pour in eggs, stir gently until just set.\n4. Serve on toasted bread.', 0.90, 7, 'easy', 'British', 1, true, false, false),
-('Cheesy Pasta Bake', 'Baked pasta with tomato sauce and cheese on top.', '1. Cook pasta. 2. Mix with tinned tomatoes and garlic. 3. Top with cheese. 4. Bake 15 min at 200C.', 1.60, 30, 'easy', 'Italian', 2, true, false, false),
-('Veggie Wrap', 'A quick lunch wrap packed with beans and peppers.', '1. Warm tortilla. 2. Fill with beans, chopped pepper, cheese. 3. Roll up and eat.', 1.40, 10, 'easy', 'Mexican', 1, true, false, false),
-('Chicken Fajita Wrap', 'Spiced chicken in a soft tortilla.', '1. Slice chicken, pepper, onion. 2. Fry with cumin and oil. 3. Fill warmed tortillas.', 2.40, 20, 'easy', 'Mexican', 2, false, false, false),
-('Tomato Soup', 'A warming bowl on a cold day.', '1. Fry onion and garlic. 2. Add tinned tomatoes and 300ml water. 3. Simmer 15 min. 4. Blend smooth.', 0.85, 25, 'easy', 'British', 2, true, true, true),
-('Cheesy Scrambled Eggs', 'Scrambled eggs with melted cheese stirred in.', '1. Whisk eggs and milk. 2. Scramble in butter. 3. Stir in grated cheese at the end.', 1.10, 8, 'easy', 'British', 1, true, false, true),
-('Buttery Mash', 'Creamy mashed potato side dish.', '1. Boil peeled potatoes 15 min. 2. Drain. 3. Mash with butter and milk. 4. Season.', 0.70, 20, 'easy', 'British', 2, true, false, true),
-('Chicken Fried Rice', 'Fried rice with chicken, egg and peas.', '1. Fry diced chicken. 2. Push aside, scramble egg. 3. Add rice, peas, soy sauce. 4. Stir fry 3 min.', 2.30, 25, 'medium', 'Chinese', 2, false, false, false),
-('Veggie Pasta Primavera', 'Pasta with mixed veg and garlic oil.', '1. Cook pasta. 2. Fry garlic in olive oil, add mixed veg 4 min. 3. Toss with pasta.', 1.30, 18, 'easy', 'Italian', 2, true, true, false),
-('Chilli Bean Wrap', 'Spicy beans wrapped in a tortilla.', '1. Heat beans with cumin and chilli flakes. 2. Fry onion. 3. Fill tortilla with mix.', 1.20, 12, 'easy', 'Mexican', 1, true, true, false),
-('Veggie Omelette', 'Omelette with peppers, onion and cheese.', '1. Fry chopped pepper and onion. 2. Pour over whisked eggs. 3. Add cheese, fold, serve.', 1.30, 12, 'easy', 'French', 1, true, false, true),
-('Garlic Bread', 'Crunchy buttery garlic bread.', '1. Mix softened butter with minced garlic. 2. Spread on sliced bread. 3. Bake 8 min at 200C.', 0.60, 10, 'easy', 'Italian', 2, true, false, false),
-('Lemon Pea Rice', 'Light rice with peas and a lemon lift.', '1. Cook rice. 2. Stir in peas, olive oil, and lemon juice. 3. Season.', 0.95, 20, 'easy', 'British', 2, true, true, true),
-('Potato and Onion Hash', 'Crispy pan-fried potatoes with onion and egg.', '1. Dice potato, fry in oil 10 min. 2. Add sliced onion, cook 5 min. 3. Top with fried egg.', 1.40, 25, 'medium', 'British', 2, true, false, true),
-('Spicy Bean Rice Bowl', 'Rice topped with spicy beans and peppers.', '1. Cook rice. 2. Heat beans with cumin, chilli flakes, chopped pepper. 3. Spoon over rice.', 1.50, 20, 'easy', 'Mexican', 2, true, true, true);
-
+('Scrambled Eggs on Toast', 'Five-minute breakfast classic.', '1. Whisk eggs with a splash of milk.
+2. Melt butter in a pan.
+3. Pour in eggs, stir gently until just set.
+4. Serve on toasted bread.', 0.90, 7, 'easy', 'British', 1, true, false, false),
+('Cheesy Pasta Bake', 'Baked pasta with tomato sauce and cheese on top.', '1. Cook pasta until al dente.
+2. Mix with tinned tomatoes and garlic.
+3. Pour into an oven dish.
+4. Top with grated cheese.
+5. Bake 15 min at 200C until golden.', 1.60, 30, 'easy', 'Italian', 2, true, false, false),
+('Veggie Wrap', 'A quick lunch wrap packed with beans and peppers.', '1. Warm tortilla in a dry pan.
+2. Heat beans in a saucepan.
+3. Chop bell pepper.
+4. Fill tortilla with beans, pepper, and cheese.
+5. Roll up tightly and serve.', 1.40, 10, 'easy', 'Mexican', 1, true, false, false),
+('Chicken Fajita Wrap', 'Spiced chicken in a soft tortilla.', '1. Slice chicken breast into strips.
+2. Slice bell pepper and onion.
+3. Heat oil in a pan over high heat.
+4. Fry chicken for 5 minutes until golden.
+5. Add pepper, onion, and cumin. Cook 3 minutes.
+6. Warm tortillas and fill with the mixture.', 2.40, 20, 'easy', 'Mexican', 2, false, false, false),
+('Tomato Soup', 'A warming bowl on a cold day.', '1. Dice onion and crush garlic.
+2. Heat olive oil and fry onion for 3 minutes.
+3. Add garlic and cook for 30 seconds.
+4. Pour in tinned tomatoes and 300ml water.
+5. Simmer for 15 minutes.
+6. Blend until smooth and season.', 0.85, 25, 'easy', 'British', 2, true, true, true),
+('Cheesy Scrambled Eggs', 'Scrambled eggs with melted cheese stirred in.', '1. Whisk eggs with a splash of milk.
+2. Melt butter in a pan over medium heat.
+3. Pour in eggs and stir gently.
+4. When almost set, stir in grated cheese.
+5. Serve immediately.', 1.10, 8, 'easy', 'British', 1, true, false, true),
+('Buttery Mash', 'Creamy mashed potato side dish.', '1. Peel potatoes and chop into chunks.
+2. Boil in salted water for 15 minutes until tender.
+3. Drain well.
+4. Add butter and a splash of milk.
+5. Mash until smooth and season.', 0.70, 20, 'easy', 'British', 2, true, false, true),
+('Chicken Fried Rice', 'Fried rice with chicken, egg and peas.', '1. Cook rice and let it cool.
+2. Dice chicken breast and fry in oil for 5 minutes.
+3. Push chicken aside and scramble the egg.
+4. Add rice and frozen peas to the pan.
+5. Pour in soy sauce and stir fry for 3 minutes.
+6. Mix everything together and serve.', 2.30, 25, 'medium', 'Chinese', 2, false, false, false),
+('Veggie Pasta Primavera', 'Pasta with mixed veg and garlic oil.', '1. Cook pasta in salted boiling water.
+2. Heat olive oil in a pan.
+3. Add crushed garlic and cook for 30 seconds.
+4. Add mixed vegetables and cook for 4 minutes.
+5. Drain pasta and toss with the veg.
+6. Season and serve.', 1.30, 18, 'easy', 'Italian', 2, true, true, false),
+('Chilli Bean Wrap', 'Spicy beans wrapped in a tortilla.', '1. Heat tinned beans in a pan.
+2. Add cumin and chilli flakes, stir well.
+3. Dice and fry onion until soft.
+4. Mix onion into the beans.
+5. Warm a tortilla and fill with the mixture.
+6. Roll up and serve.', 1.20, 12, 'easy', 'Mexican', 1, true, true, false),
+('Veggie Omelette', 'Omelette with peppers, onion and cheese.', '1. Dice bell pepper and onion.
+2. Fry in butter for 3 minutes.
+3. Whisk 3 eggs and pour over the veg.
+4. Cook until the base sets.
+5. Sprinkle cheese on one half.
+6. Fold over and serve.', 1.30, 12, 'easy', 'French', 1, true, false, true),
+('Garlic Bread', 'Crunchy buttery garlic bread.', '1. Soften butter at room temperature.
+2. Mix in crushed garlic.
+3. Slice bread and spread the garlic butter.
+4. Place on a baking tray.
+5. Bake at 200C for 8 minutes until golden.', 0.60, 10, 'easy', 'Italian', 2, true, false, false),
+('Lemon Pea Rice', 'Light rice with peas and a lemon lift.', '1. Cook rice according to packet instructions.
+2. Boil frozen peas for 2 minutes and drain.
+3. Stir peas into the rice.
+4. Add a drizzle of olive oil and squeeze of lemon.
+5. Season and serve.', 0.95, 20, 'easy', 'British', 2, true, true, true),
+('Potato and Onion Hash', 'Crispy pan-fried potatoes with onion and egg.', '1. Peel and dice potatoes into small cubes.
+2. Heat oil in a frying pan.
+3. Fry potatoes for 10 minutes until crispy.
+4. Add sliced onion and cook for 5 minutes.
+5. Season with salt and pepper.
+6. Top with a fried egg and serve.', 1.40, 25, 'medium', 'British', 2, true, false, true),
+('Spicy Bean Rice Bowl', 'Rice topped with spicy beans and peppers.', '1. Cook rice according to packet instructions.
+2. Heat tinned beans in a pan.
+3. Add cumin, chilli flakes, and diced bell pepper.
+4. Cook for 5 minutes, stirring occasionally.
+5. Spoon the spicy beans over the rice.
+6. Season and serve.', 1.50, 20, 'easy', 'Mexican', 2, true, true, true);
 -- ============================================
 -- RECIPE_INGREDIENTS for recipes 11–25
 -- ============================================
