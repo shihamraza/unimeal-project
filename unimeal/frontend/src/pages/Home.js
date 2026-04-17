@@ -46,7 +46,7 @@ function Home() {
 
   const getCuisineClass = (c) => {
     const key = (c || "").toLowerCase();
-    const valid = ["italian", "chinese", "british", "mexican", "indian"];
+    const valid = ["italian", "chinese", "british", "mexican", "indian", "french"];
     return valid.includes(key) ? `cuisine-${key}` : "cuisine-default";
   };
 

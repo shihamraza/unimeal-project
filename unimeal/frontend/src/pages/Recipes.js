@@ -66,7 +66,7 @@ function Recipes() {
 
   const getCuisineClass = (c) => {
     const key = (c || "").toLowerCase();
-    const valid = ["italian", "chinese", "british", "mexican", "indian"];
+    const valid = ["italian", "chinese", "british", "mexican", "indian", "french"];
     return valid.includes(key) ? `cuisine-${key}` : "cuisine-default";
   };
 
@@ -122,7 +122,7 @@ function Recipes() {
           type="text" placeholder="Search recipes..."
           value={search} onChange={(e) => setSearch(e.target.value)}
         />
-        <select value={cuisine} onChange={(e) => setCuisine(e.target.value)}>
+        <select className={cuisine ? "filter-active" : ""} value={cuisine} onChange={(e) => setCuisine(e.target.value)}>
           <option value="">All Cuisines</option>
           <option value="Italian">🍝 Italian</option>
           <option value="Chinese">🥡 Chinese</option>
@@ -130,20 +130,20 @@ function Recipes() {
           <option value="Mexican">🌮 Mexican</option>
           <option value="Indian">🍛 Indian</option>
         </select>
-        <select value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
+        <select className={difficulty ? "filter-active" : ""} value={difficulty} onChange={(e) => setDifficulty(e.target.value)}>
           <option value="">All Levels</option>
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </select>
-        <select value={maxCost} onChange={(e) => setMaxCost(e.target.value)}>
+        <select className={maxCost ? "filter-active" : ""} value={maxCost} onChange={(e) => setMaxCost(e.target.value)}>
           <option value="">Any Price</option>
           <option value="1">Under £1</option>
           <option value="1.5">Under £1.50</option>
           <option value="2">Under £2</option>
           <option value="3">Under £3</option>
         </select>
-        <select value={dietary} onChange={(e) => setDietary(e.target.value)}>
+        <select className={dietary ? "filter-active" : ""} value={dietary} onChange={(e) => setDietary(e.target.value)}>
           <option value="">Any Diet</option>
           <option value="vegetarian">🌿 Vegetarian</option>
           <option value="vegan">🌱 Vegan</option>
