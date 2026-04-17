@@ -90,10 +90,10 @@ function AddRecipe() {
       };
 
       await axios.post(`${process.env.REACT_APP_API_URL}/api/recipes`, payload, {
-  headers: { Authorization: `Bearer ${token}` }
-});
+        headers: { Authorization: `Bearer ${token}` },
+      });
       addToast("Recipe created!", "success");
-      navigate("/");
+      navigate("/recipes");
     } catch (err) {
       setError(err.response?.data?.error || "Failed to create recipe.");
     }
@@ -147,6 +147,7 @@ function AddRecipe() {
               <option value="British">British</option>
               <option value="Mexican">Mexican</option>
               <option value="Indian">Indian</option>
+              <option value="French">French</option>
             </select>
           </div>
         </div>

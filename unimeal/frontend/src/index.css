@@ -159,6 +159,12 @@ a { text-decoration: none; color: inherit; }
 }
 .navbar-user { display: flex; align-items: center; gap: 0.75rem; }
 .navbar-user span { color: #8892a0; font-size: 0.88rem; }
+.navbar-profile-link {
+  color: #8892a0; font-size: 0.88rem; font-weight: 500;
+  padding: 6px 12px; border-radius: var(--radius-sm);
+  transition: all var(--transition);
+}
+.navbar-profile-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
 
 /* ─── Buttons ─── */
 .btn {

@@ -28,7 +28,7 @@ router.post("/register", async (req, res) => {
     const result = await pool.query(
       `INSERT INTO users (email, password_hash, display_name, is_vegetarian, is_vegan, is_gluten_free)
        VALUES ($1, $2, $3, $4, $5, $6)
-       RETURNING id, email, display_name`,
+       RETURNING id, email, display_name, is_vegetarian, is_vegan, is_gluten_free`,
       [email, password_hash, display_name, is_vegetarian || false, is_vegan || false, is_gluten_free || false]
     );
 
@@ -44,7 +44,14 @@ router.post("/register", async (req, res) => {
     res.status(201).json({
       message: "Account created successfully.",
       token,
-      user: { id: user.id, email: user.email, display_name: user.display_name },
+      user: {
+        id: user.id,
+        email: user.email,
+        display_name: user.display_name,
+        is_vegetarian: user.is_vegetarian,
+        is_vegan: user.is_vegan,
+        is_gluten_free: user.is_gluten_free,
+      },
     });
   } catch (err) {
     console.error("Register error:", err.message);

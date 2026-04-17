@@ -15,7 +15,7 @@ function Navbar() {
       </Link>
 
       <div className="navbar-links">
-        <Link to="/" className={isActive("/")}>Recipes</Link>
+        <Link to="/recipes" className={isActive("/recipes")}>Recipes</Link>
         {user && <Link to="/meal-planner" className={isActive("/meal-planner")}>Planner</Link>}
         {user && <Link to="/shopping-list" className={isActive("/shopping-list")}>Shopping</Link>}
         {user && <Link to="/add-recipe" className={isActive("/add-recipe")}>+ Add</Link>}
@@ -24,7 +24,7 @@ function Navbar() {
       <div className="navbar-user">
         {user ? (
           <>
-            <Link to="/profile" style={{ color: "#8892a0", fontSize: "0.9rem", transition: "color 0.2s" }}>
+            <Link to="/profile" className="navbar-profile-link">
               {user.display_name}
             </Link>
             <button className="btn btn-secondary btn-small" onClick={logout}>Log Out</button>

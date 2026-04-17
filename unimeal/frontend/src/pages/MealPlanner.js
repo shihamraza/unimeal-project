@@ -286,11 +286,7 @@ const removeEntry = (day, meal) => {
               <button className="btn btn-secondary" onClick={() => setConfirmRemove(null)}>
                 Cancel
               </button>
-              <button
-                className="btn btn-primary"
-                onClick={confirmRemoveEntry}
-                style={{ background: "#dc2626", borderColor: "#dc2626" }}
-              >
+              <button className="btn btn-danger" onClick={confirmRemoveEntry}>
                 Remove
               </button>
             </div>
@@ -300,6 +296,5 @@ const removeEntry = (day, meal) => {
     </div>
   );
 }
-          
 
 export default MealPlanner;
