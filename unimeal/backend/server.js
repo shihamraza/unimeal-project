@@ -1,3 +1,5 @@
+// UniMeal API Server - handles auth, recipes, meal plans and shopping lists
+
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
