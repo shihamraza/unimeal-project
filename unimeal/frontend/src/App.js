@@ -1,6 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 import Recipes from "./pages/Recipes";
 import RecipeDetail from "./pages/RecipeDetail";
 import MealPlanner from "./pages/MealPlanner";
@@ -28,9 +30,10 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
+      <BackToTop />
     </div>
   );
 }
 
 export default App;
-
