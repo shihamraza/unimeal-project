@@ -61,7 +61,7 @@ A full-stack web application that helps students plan meals, manage recipes, and
 |Containerization|Docker + Docker Compose|
 |CI/CD|GitHub Actions|
 |Cloud|AWS EC2|
-|Infrastructure|Terraform (optional)|
+|Infrastructure|Terraform |
 
 \---
 
@@ -76,7 +76,7 @@ A full-stack web application that helps students plan meals, manage recipes, and
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR\\\\\\\_USERNAME/unimeal-project.git
+git clone https://github.com/shihamraza/unimeal-project.git
 cd unimeal-project
 
 # 2. Start all services with Docker Compose
@@ -111,11 +111,11 @@ Set these in your repo under **Settings → Secrets and Variables → Actions**:
 
 |Secret|Value|
 |-|-|
-|`DOCKER\\\\\\\_USERNAME`|Your Docker Hub username|
-|`DOCKER\\\\\\\_PASSWORD`|Your Docker Hub password|
-|`EC2\\\\\\\_HOST`|Your EC2 public IP address|
-|`EC2\\\\\\\_USER`|`ec2-user` (for Amazon Linux)|
-|`EC2\\\\\\\_SSH\\\\\\\_KEY`|Contents of your `.pem` private key file|
+|`DOCKER\_USERNAME`|Docker Hub username|
+|`DOCKER\_PASSWORD`|Docker Hub password|
+|`EC2\_HOST`|EC2 public IP address|
+|`EC2\_USER`|`ec2-user` (usually this for amazon Linux)|
+|`EC2\_SSH\_KEY`|Contents of `.pem` private key file|
 
 \---
 
@@ -128,7 +128,7 @@ Set these in your repo under **Settings → Secrets and Variables → Actions**:
 3. SSH into the instance:
 
 ```bash
-   ssh -i your-key.pem ec2-user@YOUR\\\\\\\_EC2\\\\\\\_IP
+   ssh -i your-key.pem ec2-user@16.171.22.125
    ```
 
 4. Install Docker and clone the repo:
@@ -137,19 +137,19 @@ Set these in your repo under **Settings → Secrets and Variables → Actions**:
    sudo yum install -y docker git
    sudo service docker start
    sudo usermod -aG docker ec2-user
-   git clone https://github.com/YOUR\\\\\\\_USERNAME/unimeal-project.git
+   git clone https://github.com/shihamraza/unimeal-project.git
    cd unimeal-project
    docker compose up -d
    ```
 
-5. Visit `http://YOUR\\\\\\\_EC2\\\\\\\_IP` in your browser
+5. Visit `http://16.171.22.125` in your browser
 
-### With Terraform (optional)
+### With Terraform 
 
 ```bash
 cd terraform/
 terraform init
-terraform plan -var="key\\\\\\\_name=your-key-name" -var="your\\\\\\\_ip=YOUR.IP.HERE/32"
+terraform plan -var="key\_name=unimeal-key" -var="your\_ip=16.171.22.125/32"
 terraform apply
 ```
 
