@@ -15,7 +15,7 @@ provider "aws" {
 # ─── Variables ──────────────────────────────────────────────────────
 variable "aws_region" {
   description = "AWS region to deploy in"
-  default     = "eu-north-1b"
+  default     = "eu-north-1"
 }
 
 variable "key_name" {
