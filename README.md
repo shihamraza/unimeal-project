@@ -144,7 +144,7 @@ Set these in your repo under **Settings → Secrets and Variables → Actions**:
 
 5. Visit `http://16.171.22.125` in your browser
 
-### With Terraform 
+### With Terraform (it was optional, but we still managed it)
 
 ```bash
 cd terraform/
