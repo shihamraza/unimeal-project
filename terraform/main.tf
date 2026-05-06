@@ -70,6 +70,8 @@ resource "aws_security_group" "unimeal_sg" {
   }
 }
 
+# ─── EC2 Instance ───────────────────────────────────────────────────
+
 data "aws_ami" "amazon_linux" {
   most_recent = true
 
@@ -81,9 +83,8 @@ data "aws_ami" "amazon_linux" {
   }
 }
 
-# ─── EC2 Instance ───────────────────────────────────────────────────
 resource "aws_instance" "unimeal_ec2" {
-  ami           = data.aws_ami.amazon_linux.id # Dynamic terraforming
+  ami           = data.aws_ami.amazon_linux.id # Dynamic terraform
   instance_type = "t3.micro"              # Free tier eligible
   key_name      = var.key_name
 
