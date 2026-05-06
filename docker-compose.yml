@@ -1,7 +1,6 @@
 version: "3.9"
 
 services:
-  # ─── PostgreSQL Database ───────────────────────────────────────────
   db:
     image: postgres:15-alpine
     container_name: unimeal-db
@@ -12,27 +11,17 @@ services:
       POSTGRES_DB: ${DB_NAME:-unimeal}
     volumes:
       - pg_data:/var/lib/postgresql/data
-      # Auto-run schema and seed on first start
       - ./unimeal/backend/seed/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
       - ./unimeal/backend/seed/seed_data.sql:/docker-entrypoint-initdb.d/02_seed_data.sql
     ports:
       - "5432:5432"
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
-  # ─── Node/Express Backend ──────────────────────────────────────────
   backend:
-    build:
-      context: ./unimeal/backend
-      dockerfile: Dockerfile
+    image: ${DOCKER_USERNAME}/unimeal-backend:latest
     container_name: unimeal-backend
     restart: unless-stopped
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     environment:
       PORT: 5000
       DB_HOST: db
@@ -40,16 +29,12 @@ services:
       DB_USER: ${DB_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:-postgres123}
       DB_NAME: ${DB_NAME:-unimeal}
-      JWT_SECRET: ${JWT_SECRET:-unimeal-super-secret-key-change-this-later}
-      FRONTEND_URL: http://localhost
+      JWT_SECRET: ${JWT_SECRET:-unimeal-secret}
     ports:
       - "5000:5000"
 
-  # ─── React Frontend (Nginx) ────────────────────────────────────────
   frontend:
-    build:
-      context: ./unimeal/frontend
-      dockerfile: Dockerfile
+    image: ${DOCKER_USERNAME}/unimeal-frontend:latest
     container_name: unimeal-frontend
     restart: unless-stopped
     depends_on:
